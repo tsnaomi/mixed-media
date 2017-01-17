@@ -3,11 +3,13 @@ import re
 from django.contrib.auth.models import User as AbstractUser
 from django.db import models
 
+from managers import CollectionManager, HipsterManager, PostManager
 
-# TODO: add managers, set up unique fields, default query orders
+
+# TODO: set up unique fields, default query orders
 
 class Hipster(AbstractUser):
-    pass
+    objects = HipsterManager()
 
 
 class Collection(models.Model):
@@ -16,6 +18,8 @@ class Collection(models.Model):
     title_slug = models.SlugField()
     is_public = models.BooleanField(default=True)
     date = models.DateTimeField(auto_now_add=True)
+
+    objects = CollectionManager()
 
     def save(self, *args, **kwargs):
         # on save, populate title_slut with a normalized version of title
@@ -31,3 +35,5 @@ class Post(models.Model):
     api = models.BooleanField()     # the API of the post (e.g., 'SoundCloud')
     source = models.URLField()      # the URL of the API resource
     date = models.DateTimeField(auto_now_add=True)
+
+    objects = PostManager()
