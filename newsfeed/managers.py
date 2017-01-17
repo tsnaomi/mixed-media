@@ -1,15 +1,25 @@
 from django.contrib.auth.models import BaseUserManager
 from django.db.models import Manager
 
-# TODO: add default ordering
-
 
 class HipsterManager(BaseUserManager):
 
-    def add_user(self, username, email, password):
-        '''Add the hipster to the database.'''
-        hipster = self.Model(username=username.lower(), email=email.lower())
+    def create_user(self, username, email, password):
+        '''Add a hipster to the database.'''
+        hipster = self.model(username=username.lower(), email=email.lower())
         hipster.set_password(password)
+        hipster.save(using=self._db)
+
+        return hipster
+
+    def create_superuser(self, username, email, password):
+        '''Add super hipster to the database.'''
+        hipster = self.create_user(
+            username=username,
+            email=email,
+            password=password,
+            )
+        hipster.is_admin = True
         hipster.save(using=self._db)
 
         return hipster
