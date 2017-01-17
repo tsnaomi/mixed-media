@@ -44,7 +44,7 @@ class PostManager(Manager):
 
     def get_public_posts(self):
         '''Return all of the public posts.'''
-        return self.filter(collection__public=True)
+        return self.filter(collection__is_public=True)
 
     def get_user_posts(self, user):
         '''Return all of the posts for a given user.'''
@@ -52,4 +52,4 @@ class PostManager(Manager):
 
     def get_user_public_posts(self, user):
         '''Return all of the public posts for a given user.'''
-        return self.filter(hipster=user, collection__public=True)
+        return self.filter(hipster=user, collection__is_public=True)
