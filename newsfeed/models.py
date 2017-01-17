@@ -22,7 +22,7 @@ class Collection(models.Model):
     objects = CollectionManager()
 
     def save(self, *args, **kwargs):
-        # on save, populate title_slut with a normalized version of title
+        # on save, populate title_slug with a normalized version of title
         self.title_slug = '-'.join(re.split(r'[^A-Z0-9]+', self.title.lower()))
 
         super(Collection, self).save(*args, **kwargs)
