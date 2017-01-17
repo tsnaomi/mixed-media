@@ -1,3 +1,5 @@
 *.pyc
 
 startup.txt
+
+newsfeed/migrations/
