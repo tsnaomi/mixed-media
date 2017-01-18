@@ -4,13 +4,21 @@ from .base import *  # noqa
 
 SITE_URL = ''  # TODO
 
-
-# Debugging -------------------------------------------------------------------
-
 DEBUG = False
-TEMPLATE_DEBUG = False
 
-# Static ----------------------------------------------------------------------
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
+TEMPLATES = [{
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'DIRS': [os.path.join(BASE_DIR, 'newsfeed/templates')],
+    'APP_DIRS': True,
+    'OPTIONS': {
+        'context_processors': [
+            'django.template.context_processors.debug',
+            'django.template.context_processors.request',
+            'django.contrib.auth.context_processors.auth',
+            'django.contrib.messages.context_processors.messages',
+        ],
+        'debug': DEBUG,
+    },
+    }]
 
 STATIC_URL = '/static/'  # TODO
