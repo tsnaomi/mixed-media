@@ -8,10 +8,14 @@
     </head>
 
     <body>
-        <h1>Mixed Media</h1>
+        <h1>
+            <a href="{% url 'home' %}">Mixed Media</a>
+        </h1>
+
+        {% block collections %}{% endblock %}
 
         <!-- Newsfeed -->
-        <div id='newsfeed'>
+        <div class='newsfeed'>
         {% block newsfeed %}{% endblock %}
         </div>
 

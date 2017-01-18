@@ -1,3 +1,7 @@
 .grid-item {
-    max-width: 300px;
+    max-width: 300px;3
+}
+
+.active-collection {
+    font-weight: bold;
 }

@@ -35,10 +35,6 @@ class CollectionManager(Manager):
         '''Return all of the collections for a given user.'''
         return self.filter(hipster=user)
 
-    def get_collection(self, user, title_slug):
-        '''Return the specified collection for a given user.'''
-        return self.filter(hipster=user, title_slug=title_slug)
-
 
 class PostManager(Manager):
 
