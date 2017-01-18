@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='en'>
+    {% load static %}
+    <head>
+        <meta charset='utf-8'>
+        <title>Mixed Media {% block title %}{% endblock %}</title>
+        <link rel='stylesheet' href="{% static 'style.css' %}">
+    </head>
+
+    <body>
+        <h1>Mixed Media</h1>
+
+        <!-- Newsfeed -->
+        <div id='newsfeed'>
+        {% block newsfeed %}{% endblock %}
+        </div>
+
+        <!-- Libraries -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/masonry.min.js' %}"></script>
+        <script src="{% static 'js/imagesloaded.min.js' %}"></script>
+        <script src="{% static 'js/newsfeed.js' %}"></script>
+    </body>
+</html>

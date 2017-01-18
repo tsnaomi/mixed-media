@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block newsfeed %}
+    <div class='grid'>
+        {% for post in posts %}
+        <div class='post grid-item'>
+            <div class='caption'>{{ post.caption }}</div>
+            {% if post.api == 'SC' %} <!-- SoundCloud -->
+            <iframe class='soundcloud' type='text/html' frameborder='0' src='{{ post.source }}'></iframe>
+            {% elif post.api == 'YT' %} <!-- YouTube -->
+            <iframe class='youtube' type='text/html' frameborder='0' src='{{ post.source }}'></iframe>
+            {% elif post.api == 'FL' %} <!-- Flickr -->
+            <img class='flickr' src='{{ post.source }}' alt='{{ post.caption }}'/>
+            {% endif %}
+            <a class='collection-link' href="{% url 'collection' post.hipster.username post.collection.title_slug %}">#{{ post.collection.title_slug }}</a>
+            <a class='profile-link' href="{% url 'profile' post.hipster.username %}">@{{ post.hipster.username }}</a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
