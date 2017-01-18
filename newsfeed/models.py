@@ -77,6 +77,7 @@ class Post(models.Model):
     collection = models.ForeignKey(Collection)
     api = models.CharField(max_length=2, choices=APIs)  # the API of the post
     source = models.URLField()  # the URL of the API resource
+    # is_starred = models.BooleanField(default=False)
     date = models.DateTimeField(auto_now_add=True)
 
     objects = PostManager()
