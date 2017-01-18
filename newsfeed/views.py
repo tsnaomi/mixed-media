@@ -8,7 +8,7 @@ def home_view(request):
     posts = Post.objects.get_public_posts()
     context = {'posts': posts}
 
-    return render(request, 'home.html', context)
+    return render(request, 'newsfeed.html', context)
 
 
 def profile_view(request, profile):
